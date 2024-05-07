@@ -22,7 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{483e653e-1a88-4689-8c82-fbb2b647161b}</ProjectGuid>
-    <RootNamespace>ExocordClient</RootNamespace>
+    <RootNamespace>CometCore</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>CometCore</ProjectName>
   </PropertyGroup>

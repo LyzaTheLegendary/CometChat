@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Connection.cpp">
+      <Filter>Src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>Src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Src\Storage</Filter>
+    </ClCompile>
+    <ClCompile Include="FilesystemHelper.cpp">
+      <Filter>Src\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="FileStream.cpp">
+      <Filter>Src\Streams</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryStream.cpp">
+      <Filter>Src\Streams</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Connection.hpp">
+      <Filter>Header\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.hpp">
+      <Filter>Header\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="DataEntry.hpp">
+      <Filter>Header\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePosition.hpp">
+      <Filter>Header\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.hpp">
+      <Filter>Header\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="FilesystemHelper.hpp">
+      <Filter>Header\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.hpp">
+      <Filter>Header\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="FileStream.hpp">
+      <Filter>Header\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryStream.hpp">
+      <Filter>Header\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="StreamInterface.hpp">
+      <Filter>Header\Streams</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{dcaf0f31-df9a-4bcb-816c-b7db08f9ce5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{cc3b63d3-3f09-44aa-baff-3c66b06380f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Network">
+      <UniqueIdentifier>{9a7ca866-2ba6-428b-a467-47f7270dde43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Network">
+      <UniqueIdentifier>{d6e897cc-249d-4b1d-af35-80c9424762c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Storage">
+      <UniqueIdentifier>{65664c87-0c55-4768-9101-9ce23981e50a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Storage">
+      <UniqueIdentifier>{6a49a359-028d-4c7c-a270-7682b26da60d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Helpers">
+      <UniqueIdentifier>{f1944adc-9f5a-4830-ad4e-b27cee037db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Helpers">
+      <UniqueIdentifier>{dffd2de6-f7c3-4e7f-97ec-32abacb71889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Streams">
+      <UniqueIdentifier>{e3ae837b-5ee8-4482-a09a-4c04f05a2d10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Streams">
+      <UniqueIdentifier>{6aab1537-adaf-46ec-8f91-f38aeb1c841f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

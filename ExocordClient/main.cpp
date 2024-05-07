@@ -30,6 +30,11 @@ void InitNetwork() {
 }
 
 int main() {
+
+	FileStream fs("Resource/test.txt", std::ios::binary | std::ios::out);
+
+	fs.Write<int>(32);
+
 	//std::fstream fs("Resource/test.txt", std::ios::in);
 	//
 	//if (fs.is_open()) {

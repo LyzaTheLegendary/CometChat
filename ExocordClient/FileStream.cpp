@@ -7,46 +7,40 @@ int64_t FileStream::GetSize()
 
 int64_t FileStream::GetPos()
 {
-    return ftell(m_fp);
+    return m_fstream.tellp();
 }
 
 void FileStream::Seek(int64_t offset, uint8_t seekOrigin)
 {
-    int errorcode = 0;
     switch (seekOrigin) {
     case Stream::SEEK_ORIGIN_BEGIN:
-        errorcode = fseek(m_fp, offset, SEEK_SET);
+        m_fstream.seekp(0, std::ios::beg);
         break;
     case Stream::SEEK_ORIGIN_CURRENT:
-        errorcode = fseek(m_fp, offset, SEEK_CUR);
+        m_fstream.seekp(0, std::ios::cur);
         break;
     case Stream::SEEK_ORIGIN_END:
-        errorcode = fseek(m_fp, offset, SEEK_END);
+        m_fstream.seekp(0, std::ios::end);
         break;
     }
-
-    if (errorcode != 0) {
-        throw std::exception(std::system_category().message(errorcode).c_str());
-    }
 }
 
-uint64_t FileStream::Write(std::vector<uint8_t> buffer) noexcept
+uint64_t FileStream::Write(std::vector<uint8_t> buffer)
 {
-    return fwrite(reinterpret_cast<void*>(buffer.data()), sizeof uint8_t, buffer.size(), m_fp);;
+    m_fstream.write(reinterpret_cast<char*>(buffer.data()), buffer.size());
+    return buffer.size();
 }
 
-uint64_t FileStream::Write(uint8_t* buff, uint64_t size) noexcept
+uint64_t FileStream::Write(uint8_t* buff, uint64_t size)
 {
-    return fwrite(reinterpret_cast<void*>(buff), sizeof uint8_t, size, m_fp);
+    m_fstream.write(reinterpret_cast<char*>(buff), size);
+    return size;
 }
 
 std::vector<uint8_t> FileStream::Read(uint64_t size)
 {
     std::vector<uint8_t> buff(size);
-    size_t result = fread(buff.data(), sizeof(uint8_t), size, m_fp);
-
-    if (result != size) 
-        throw std::runtime_error("Failed to read data from file");
+    m_fstream.read(reinterpret_cast<char*>(buff.data()), size);
     
     return buff;
 }

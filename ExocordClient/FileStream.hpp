@@ -4,38 +4,24 @@
 #include <memory>
 #include <exception>
 #include <system_error>
-#define ReadModeBinary "rb"
-#define WriteModeBinary "wb"
-#define AppendModeBinary "ab"
+#include<fstream>
 // rewrite to use the std library
 class FileStream : public StreamInterface
 {
 public:
-	FileStream(const char* path, const char *mode = ReadModeBinary) {
-
-		errno_t err = fopen_s(&m_fp, path, mode);
-		
-		if (err != 0) {
-			if (m_fp != nullptr) {
-				fclose(m_fp);
-			}
-
-			char errorMessage[256];
-			strerror_s(errorMessage, sizeof(errorMessage), err);
-			throw std::exception((char*)&errorMessage);
+	FileStream(const char* path, int flags = std::ios::in | std::ios::binary) {
+		m_fstream = std::fstream(path, flags);
+		if (!m_fstream.is_open()) {
+			throw std::exception("File not found");
 		}
-
-		fseek(m_fp, 0, SEEK_END);
-		m_fileSize = ftell(m_fp);
-		fseek(m_fp, 0, SEEK_SET);
+		m_fstream.seekp(0, std::ios::end);
+		m_fileSize = m_fstream.tellp();
+		m_fstream.seekp(0, std::ios::beg);
 	}
 
 	~FileStream() {
-		if (m_fp == nullptr)
-			return;
-
-		fflush(m_fp);
-		fclose(m_fp);
+		m_fstream.flush();
+		m_fstream.close();
 	}
 
 	int64_t GetSize();
@@ -43,7 +29,7 @@ public:
 
 	void Seek(int64_t offset, uint8_t seekOrigin);
 
-	uint64_t Write(std::vector<uint8_t> buffer) noexcept override;
+	uint64_t Write(std::vector<uint8_t> buffer) override;
 
 	template <typename T>
 	uint64_t Write(T data) {
@@ -56,7 +42,7 @@ public:
 		return Write(buff);
 	}
 
-	uint64_t Write(uint8_t* buff, uint64_t size) noexcept override;
+	uint64_t Write(uint8_t* buff, uint64_t size) override;
 
 	std::vector<uint8_t> Read(uint64_t size) override;
 	std::string ReadString();
@@ -71,7 +57,7 @@ public:
 	}
 
 private:
-	FILE* m_fp = nullptr;
+	std::fstream m_fstream;
 	int64_t m_fileSize = 0;
 };
 

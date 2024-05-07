@@ -2,11 +2,8 @@
 #include "MemoryStream.hpp"
 #include "FileStream.hpp"
 #include "Connection.hpp"
-#include <stdio.h>
 #include <thread>
-#include <windows.h>
 #include<future>
-#include<fstream>
 
 void OnReceive(Message msg) {
 	printf("msg received");
@@ -30,19 +27,6 @@ void InitNetwork() {
 }
 
 int main() {
-
-	FileStream fs("Resource/test.txt", std::ios::binary | std::ios::out);
-
-	fs.Write<int>(32);
-
-	//std::fstream fs("Resource/test.txt", std::ios::in);
-	//
-	//if (fs.is_open()) {
-	//	std::string line;
-	//	while (std::getline(fs,line)) {
-	//		printf(line.c_str());
-	//	}
-	//}
 	return 0;
 }
 

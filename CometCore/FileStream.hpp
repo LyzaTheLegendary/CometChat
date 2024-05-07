@@ -6,10 +6,14 @@
 #include <system_error>
 #include<fstream>
 // rewrite to use the std library
+
+#define ReadBinary std::ios::in || std::ios::binary
+#define WriteBinary std::ios::binary | std::ios::out
+
 class FileStream : public StreamInterface
 {
 public:
-	FileStream(const char* path, int flags = std::ios::in | std::ios::binary) {
+	FileStream(const char* path, int flags = ReadBinary) {
 		m_fstream = std::fstream(path, flags);
 		if (!m_fstream.is_open()) {
 			throw std::exception("File not found");

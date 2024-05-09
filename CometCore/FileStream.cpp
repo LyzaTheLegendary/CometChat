@@ -31,6 +31,14 @@ uint64_t FileStream::Write(std::vector<uint8_t> buffer)
     return buffer.size();
 }
 
+void FileStream::WriteString(std::string str)
+{
+    uint16_t strLen = str.length();
+
+    Write<uint16_t>(strLen);
+    Write(reinterpret_cast<uint8_t*>(str.data()), strLen);
+}
+
 uint64_t FileStream::Write(uint8_t* buff, uint64_t size)
 {
     m_fstream.write(reinterpret_cast<char*>(buff), size);
@@ -55,4 +63,9 @@ std::string FileStream::ReadString()
     std::vector<uint8_t> strBuff = Read(strLen);
     memcpy(str.data(), strBuff.data(), strLen);
     return str;
+}
+
+void FileStream::Flush()
+{
+    m_fstream.flush();
 }

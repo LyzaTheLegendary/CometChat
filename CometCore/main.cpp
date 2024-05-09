@@ -1,7 +1,6 @@
 #pragma once
-#include "MemoryStream.hpp"
-#include "FileStream.hpp"
 #include "Connection.hpp"
+#include "Storage.hpp"
 #include <thread>
 #include<future>
 
@@ -27,6 +26,9 @@ void InitNetwork() {
 }
 
 int main() {
+	Storage storage("Resource");
+	std::vector<uint8_t> buffer{ 1,2,3,4,5 };
+	storage.AddFile("test", buffer);
 	return 0;
 }
 

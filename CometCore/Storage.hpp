@@ -9,12 +9,17 @@
 class Storage {
 public:
 	Storage(const char* directory) {
-		if (!Filesystem::DirectoryExists(directory))
+		if (!Filesystem::DirectoryExists(directory)) {
+			Filesystem::xCreateDirectory(directory);
 			return;
+		}
 		m_directory = std::string(directory);
 		std::string path(directory);
 		path += "/MAP";
-
+		
+		if (!Filesystem::FileExists(path.c_str()))
+			return;
+	
 		FileStream fs(path.c_str());
 
 		int32_t dataEntries = fs.Read<int32_t>();
@@ -31,6 +36,7 @@ public:
 		}
 
 		int32_t fragmentEntries = fs.Read<int32_t>();
+
 		FilePosition position;
 		for (int32_t i = 0; i < fragmentEntries; i++) {
 			position = fs.Read<FilePosition>();
@@ -43,7 +49,7 @@ public:
 	void RemoveFile(std::string key);
 	void SaveMap();
 private:
-	std::unordered_map<std::string_view, DataEntry> m_fileMap;
+	std::unordered_map<std::string, DataEntry> m_fileMap;
 	std::queue<FilePosition> m_fragments;
 	std::string m_directory;
 };

@@ -4,6 +4,6 @@
 namespace fs = std::filesystem;
 namespace Filesystem {
 	bool DirectoryExists(const char* path) noexcept;
-
-	void CreateDirectory(const char* path);
+	void xCreateDirectory(const char* path);
+	bool FileExists(const char* path);
 }

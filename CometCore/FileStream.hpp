@@ -7,7 +7,7 @@
 #include<fstream>
 // rewrite to use the std library
 
-#define ReadBinary std::ios::in || std::ios::binary
+#define ReadBinary std::ios::in | std::ios::binary
 #define WriteBinary std::ios::binary | std::ios::out
 
 class FileStream : public StreamInterface
@@ -34,6 +34,7 @@ public:
 	void Seek(int64_t offset, uint8_t seekOrigin);
 
 	uint64_t Write(std::vector<uint8_t> buffer) override;
+	void WriteString(std::string str);
 
 	template <typename T>
 	uint64_t Write(T data) {
@@ -60,6 +61,7 @@ public:
 		return *reinterpret_cast<T*>(buff.data());
 	}
 
+	void Flush();
 private:
 	std::fstream m_fstream;
 	int64_t m_fileSize = 0;

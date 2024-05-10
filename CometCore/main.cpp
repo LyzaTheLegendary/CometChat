@@ -27,6 +27,7 @@ int main() {
 	Storage storage("Resource");
 	std::vector<uint8_t> buffer{ 1,2,3,4,5 };
 	storage.AddFile("test", buffer);
+	//storage.RemoveFile("test");
 	return 0;
 }
 

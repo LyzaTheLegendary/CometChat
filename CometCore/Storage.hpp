@@ -30,7 +30,10 @@ public:
 			int16_t flags = fs.Read<int16_t>();
 
 			uint16_t positionCount = fs.Read<uint16_t>();
-			std::vector<FilePosition> positions(positionCount);
+			std::vector<FilePosition> positions;
+
+			for (uint16_t i = 0; i < positionCount; i++)
+				positions.push_back(fs.Read<FilePosition>());
 
 			m_fileMap[key] = DataEntry(flags, positions);
 		}

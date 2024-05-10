@@ -41,10 +41,6 @@ void Storage::AddFile(std::string key, std::vector<uint8_t> buffer)
 
 	fs.Write(buffer);
 
-	std::vector<FilePosition> positions{
-		pos
-	};
-
 	m_fileMap[key] = DataEntry(0, pos); // TODO fix memory violation? ( skill issue ) 
 	SaveMap();
 }
@@ -53,6 +49,7 @@ void Storage::RemoveFile(std::string key)
 {
 	std::vector<FilePosition> positions = m_fileMap[key].GetPositions();
 	m_fileMap.erase(key);
+	
 
 	for (auto position : positions)
 		m_fragments.push(position);
@@ -65,7 +62,8 @@ void Storage::SaveMap()
 	int32_t dataEntries = m_fileMap.size();
 	FileStream fs((m_directory + "/MAP").c_str(), WriteBinary);
 
-	//for (auto it = m_fileMap.begin(); it != m_fileMap.end(); ++it) { // cannot for each over it for some reason?
+	fs.Write<int32_t>(dataEntries);
+
 	for( auto& element : m_fileMap) {
 		std::string key = element.first;
 		DataEntry entry = element.second;

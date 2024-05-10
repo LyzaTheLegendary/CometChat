@@ -3,10 +3,9 @@
 #include <ws2tcpip.h>
 #include <stdint.h>
 #include <queue>
-#include <memory>
 #include <mutex>
 #include <future>
-#include "Message.hpp"
+#include "Message.hpp" // this breaks everything??
 
 #pragma comment (lib, "Ws2_32.lib")
 #pragma comment (lib, "Mswsock.lib")

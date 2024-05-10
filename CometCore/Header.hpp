@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 
-#pragma pack(1)
+#pragma pack(push, 1)
 struct Header {
 public:
 	uint16_t GetSize()	{ return m_size; }
@@ -16,3 +16,4 @@ private:
 	uint16_t m_size;
 	uint16_t m_id;
 };
+#pragma pack(pop)

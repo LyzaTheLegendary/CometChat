@@ -22,6 +22,9 @@
     <ClCompile Include="MemoryStream.cpp">
       <Filter>Src\Streams</Filter>
     </ClCompile>
+    <ClCompile Include="StringHelper.cpp">
+      <Filter>Src\Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.hpp">
@@ -53,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="StreamInterface.hpp">
       <Filter>Header\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.hpp">
+      <Filter>Header\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

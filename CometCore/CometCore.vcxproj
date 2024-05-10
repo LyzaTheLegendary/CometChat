@@ -137,6 +137,7 @@
     <ClCompile Include="MemoryStream.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="Storage.cpp" />
+    <ClCompile Include="StringHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.hpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="StreamInterface.hpp" />
     <ClInclude Include="MemoryStream.hpp" />
     <ClInclude Include="Message.hpp" />
+    <ClInclude Include="StringHelper.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

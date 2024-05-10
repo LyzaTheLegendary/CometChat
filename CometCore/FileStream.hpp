@@ -13,25 +13,26 @@
 class FileStream : public StreamInterface
 {
 public:
-	FileStream(const char* path, int flags = ReadBinary) {
+	FileStream(const std::string& path, int flags = ReadBinary) {
 		m_fstream = std::fstream(path, flags);
 		if (!m_fstream.is_open()) {
 			throw std::exception("File not found");
 		}
+
 		m_fstream.seekp(0, std::ios::end);
 		m_fileSize = m_fstream.tellp();
 		m_fstream.seekp(0, std::ios::beg);
 	}
 
 	~FileStream() {
-		m_fstream.flush();
-		m_fstream.close();
+		Close();
 	}
 
 	int64_t GetSize();
 	int64_t GetPos();
 
 	void Seek(int64_t offset, uint8_t seekOrigin);
+	void Close();
 
 	uint64_t Write(std::vector<uint8_t> buffer) override;
 	void WriteString(std::string str);

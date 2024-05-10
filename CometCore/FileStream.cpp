@@ -25,6 +25,12 @@ void FileStream::Seek(int64_t offset, uint8_t seekOrigin)
     }
 }
 
+void FileStream::Close()
+{
+    m_fstream.flush();
+    m_fstream.close();
+}
+
 uint64_t FileStream::Write(std::vector<uint8_t> buffer)
 {
     m_fstream.write(reinterpret_cast<char*>(buffer.data()), buffer.size());
@@ -55,14 +61,14 @@ std::vector<uint8_t> FileStream::Read(uint64_t size)
 
 std::string FileStream::ReadString()
 {
-    uint16_t strLen = Read<uint16_t>();
+    auto vecBytes = Read(Read<uint16_t>());
+    return std::string(vecBytes.begin(), vecBytes.end());
+    //std::string str;
+    //str.reserve(strLen);
 
-    std::string str;
-    str.reserve(strLen);
-
-    std::vector<uint8_t> strBuff = Read(strLen);
-    memcpy(str.data(), strBuff.data(), strLen);
-    return str;
+    //std::vector<uint8_t> strBuff = Read(strLen);
+    //memcpy(str.data(), strBuff.data(), strLen);
+    //return str;
 }
 
 void FileStream::Flush()

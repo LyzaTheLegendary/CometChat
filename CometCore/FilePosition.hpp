@@ -5,7 +5,7 @@ public:
 	int64_t start;
 	int64_t end;
 
-	int64_t CalcSize() {
+	int64_t CalcSize() const {
 		return end - start;
 	}
 };

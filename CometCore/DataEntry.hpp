@@ -6,31 +6,17 @@
 struct DataEntry {
 
 public:
-	DataEntry(int16_t flags, std::vector<FilePosition> filePositions) {
-		m_flags = flags;
-		m_filePositions = filePositions;
+	DataEntry(int16_t flags, std::vector<FilePosition>& filePositions) : m_flags(flags), m_filePositions(filePositions) {}
+	DataEntry(int16_t flags, FilePosition position) : m_flags(flags), m_filePositions{ position } {}
 
-	}
+	DataEntry() : m_flags(0) {}
 
-	DataEntry(int16_t flags, FilePosition position) {
-		m_flags = flags;
-		m_filePositions.push_back(position);
-		
-	}
+	const uint16_t Fragments() { return m_filePositions.size(); }
 
-	DataEntry() = default;
+	const int16_t Flags() { return m_flags; }
 
-	uint16_t Fragments() {
-		return m_filePositions.size();
-	}
+	std::vector<FilePosition>& GetPositions() { return m_filePositions; }
 
-	int16_t Flags() {
-		return m_flags;
-	}
-
-	std::vector<FilePosition> GetPositions() {
-		return m_filePositions;
-	}
 private:
 	int16_t m_flags;
 	std::vector<FilePosition> m_filePositions;

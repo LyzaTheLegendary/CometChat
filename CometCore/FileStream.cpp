@@ -51,6 +51,12 @@ uint64_t FileStream::Write(uint8_t* buff, uint64_t size)
     return size;
 }
 
+std::vector<uint8_t> FileStream::ReadAll()
+{
+    Seek(0, Stream::SEEK_ORIGIN_BEGIN);
+    return Read(GetSize());
+}
+
 std::vector<uint8_t> FileStream::Read(uint64_t size)
 {
     std::vector<uint8_t> buff(size);

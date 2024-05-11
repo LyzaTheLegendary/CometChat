@@ -1,7 +1,6 @@
 #include "Connection.hpp"
 #include "Storage.hpp"
 #include <thread>
-#include <iostream>
 
 //void OnReceive(Message msg) {
 //	printf("msg received");
@@ -28,14 +27,7 @@ int main() {
 	Storage storage("Resource");
 	std::vector<uint8_t> buffer{ 1,2,3,4,5 };
 
-	//storage.AddFile("test", buffer);
-	std::string str("test");
-	auto buffer2 = storage.FetchFile(str);
-
-	for (auto byte : buffer2) {
-		std::cout << static_cast<int>(byte) << " ";
-	}
-	//
+	storage.AddFile("test", buffer);
 
 	return 0;
 }

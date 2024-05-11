@@ -50,6 +50,8 @@ public:
 
 	uint64_t Write(uint8_t* buff, uint64_t size) override;
 
+	//	Resets the file pointer to the start to read everything from the start
+	std::vector<uint8_t> ReadAll();
 	std::vector<uint8_t> Read(uint64_t size) override;
 	std::string ReadString();
 	template <typename T>

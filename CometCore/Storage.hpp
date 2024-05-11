@@ -12,8 +12,8 @@ class Storage {
 public:
 	Storage(std::string directory);
 	std::vector<uint8_t> FetchFile(std::string& key);
-	void AddFile(std::string key, std::vector<uint8_t> buffer);
-	void RemoveFile(std::string key);
+	void AddFile(std::string& key, std::vector<uint8_t>& buffer);
+	void RemoveFile(std::string& key);
 	void SaveMap();
 private:
 	void InsertFile(std::string& key, std::vector<uint8_t>& buffer);

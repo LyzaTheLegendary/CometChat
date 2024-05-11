@@ -64,7 +64,7 @@ std::vector<uint8_t> Storage::FetchFile(std::string& key)
 	return buffer;
 }
 
-void Storage::AddFile(std::string key, std::vector<uint8_t> buffer)
+void Storage::AddFile(std::string& key, std::vector<uint8_t>& buffer)
 {
 	if (key.empty())
 		throw std::invalid_argument("Key cannot be an empty string.");
@@ -77,7 +77,7 @@ void Storage::AddFile(std::string key, std::vector<uint8_t> buffer)
 	InsertFileSegmented(key, buffer);
 }
 
-void Storage::RemoveFile(std::string key)
+void Storage::RemoveFile(std::string& key)
 {
 	DataEntry& dataEntry = m_fileMap.at(key);
 	

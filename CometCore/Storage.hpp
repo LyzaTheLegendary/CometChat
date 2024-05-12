@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <queue>
 #include <stdint.h>
-
+//TODO: add defragmentation.
 class Storage {
 public:
 	Storage(std::string directory);

@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{f4fe0391-ec8d-4f8d-97c0-41c0199c60a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Core">
+      <UniqueIdentifier>{0d245aff-5f1d-42fd-93da-2c7fe94adecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{1bc3941b-f41a-4e04-9a30-26bd7431afd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Core">
+      <UniqueIdentifier>{ab89f03a-af8c-480d-81d4-c792b08013d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Core\Shader">
+      <UniqueIdentifier>{e561a150-ad72-4b9d-8459-538d33892207}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Core\Shader">
+      <UniqueIdentifier>{02650bcd-3d3a-49d8-aaea-a601ba5c95a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,5 +39,13 @@
     <ClCompile Include="glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Graphics\Core\Shader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Graphics\Core\Shader</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
